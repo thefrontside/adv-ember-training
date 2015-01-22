@@ -1,13 +1,26 @@
-{{#cc-form card=card as |form|}}
-  {{cc-input number=form.number type=form.type class="spec-cc-input"}}
-  {{#if form.number}}
-    Valid
-  {{else}}
-    Invalid
-  {{/if}}
-  {{cc-badge type=form.type class="spec-cc-badge"}}
-  {{input value=form.name class="spec-cc-name"}}
-  {{input value=form.exp class="spec-cc-exp"}}
-  {{input value=form.ccv class="spec-cc-ccv"}}
-  <button class="spec-pay-button">Pay!</button>
-{{/cc-form}}
+{{#if success}}
+  <h3 class="spec-success-message">Success!</h3>
+{{/if}}
+
+<div>
+  <h1> Enter Credit Card </h1>
+  {{#cc-form card=creditCard as |form|}}
+    {{#if form.number}}
+      Valid
+    {{else}}
+      Invalid
+    {{/if}}
+
+    <div {{bind-attr class=":cc-outer form.type"}}>
+      <div class="background">
+        <div class="cc-inner">
+          {{cc-input number=form.number type=form.type class="spec-cc-input cc-number" placeholder="4111111111111111"}}
+          {{input value=form.exp class="spec-cc-exp cc-exp" placeholder="EXP"}}
+          {{input value=form.ccv class="spec-cc-ccv cc-ccv" placeholder="CCV"}}
+          {{input value=form.name class="spec-cc-name cc-name" placeholder="YOUR NAME"}}
+          <button class="spec-pay-button" {{bind-attr disabled="form.isInvalid"}} {{action "submitCard" form}}>Pay!</button>
+        </div>
+      </div>
+    </div>
+  {{/cc-form}}
+</div>
