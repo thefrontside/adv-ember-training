@@ -34,5 +34,10 @@
     "ember-sinon": "0.0.3",
     "express": "^4.8.5",
     "glob": "^4.0.5"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/fauxlytics"
+    ]
   }
 }
