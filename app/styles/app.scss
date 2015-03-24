@@ -3,6 +3,8 @@ $color-dark: #3b407f;
 $color-light: #588cb1;
 $color-background: hsla(205, 60%, 70%, 1);
 
+@import "stately.scss";
+
 html, body {
   background-color: $color-background;
   margin: 20px;

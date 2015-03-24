@@ -1,4 +1,15 @@
 <p>{{#link-to "application"}}Back to home{{/link-to}}</p>
+
+<div id="plain">
+  <ul class="stately">
+    {{#each state in allStates}}
+      <li {{bind-attr class="state.lowerCaseAbbrev state.isSelected state.isHighlighted"}}>
+        {{state.lowerCaseAbbrev}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
 <p>
   {{twitter-typeahead source=matchStates displayKey=formatState on-select="selectState"}}
 </p>

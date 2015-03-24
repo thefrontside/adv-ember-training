@@ -1,206 +1,222 @@
-export default [
+import Ember from 'ember';
+
+var stateData = [
   {
     "name": "Alabama",
-    "alpha-2": "AL"
+    "abbrev": "AL"
   },
   {
     "name": "Alaska",
-    "alpha-2": "AK"
+    "abbrev": "AK"
   },
   {
     "name": "Arizona",
-    "alpha-2": "AZ"
+    "abbrev": "AZ"
   },
   {
     "name": "Arkansas",
-    "alpha-2": "AR"
+    "abbrev": "AR"
   },
   {
     "name": "California",
-    "alpha-2": "CA"
+    "abbrev": "CA"
   },
   {
     "name": "Colorado",
-    "alpha-2": "CO"
+    "abbrev": "CO"
   },
   {
     "name": "Connecticut",
-    "alpha-2": "CT"
+    "abbrev": "CT"
   },
   {
     "name": "Delaware",
-    "alpha-2": "DE"
+    "abbrev": "DE"
   },
   {
     "name": "District of Columbia",
-    "alpha-2": "DC"
+    "abbrev": "DC"
   },
   {
     "name": "Florida",
-    "alpha-2": "FL"
+    "abbrev": "FL"
   },
   {
     "name": "Georgia",
-    "alpha-2": "GA"
+    "abbrev": "GA"
   },
   {
     "name": "Hawaii",
-    "alpha-2": "HI"
+    "abbrev": "HI"
   },
   {
     "name": "Idaho",
-    "alpha-2": "ID"
+    "abbrev": "ID"
   },
   {
     "name": "Illinois",
-    "alpha-2": "IL"
+    "abbrev": "IL"
   },
   {
     "name": "Indiana",
-    "alpha-2": "IN"
+    "abbrev": "IN"
   },
   {
     "name": "Iowa",
-    "alpha-2": "IA"
+    "abbrev": "IA"
   },
   {
-    "name": "Kansa",
-    "alpha-2": "KS"
+    "name": "Kansas",
+    "abbrev": "KS"
   },
   {
     "name": "Kentucky",
-    "alpha-2": "KY"
+    "abbrev": "KY"
   },
   {
     "name": "Lousiana",
-    "alpha-2": "LA"
+    "abbrev": "LA"
   },
   {
     "name": "Maine",
-    "alpha-2": "ME"
+    "abbrev": "ME"
   },
   {
     "name": "Maryland",
-    "alpha-2": "MD"
+    "abbrev": "MD"
   },
   {
     "name": "Massachusetts",
-    "alpha-2": "MA"
+    "abbrev": "MA"
   },
   {
     "name": "Michigan",
-    "alpha-2": "MI"
+    "abbrev": "MI"
   },
   {
     "name": "Minnesota",
-    "alpha-2": "MN"
+    "abbrev": "MN"
   },
   {
     "name": "Mississippi",
-    "alpha-2": "MS"
+    "abbrev": "MS"
   },
   {
     "name": "Missouri",
-    "alpha-2": "MO"
+    "abbrev": "MO"
   },
   {
     "name": "Montana",
-    "alpha-2": "MT"
+    "abbrev": "MT"
   },
   {
     "name": "Nebraska",
-    "alpha-2": "NE"
+    "abbrev": "NE"
   },
   {
     "name": "Nevada",
-    "alpha-2": "NV"
+    "abbrev": "NV"
   },
   {
     "name": "New Hampshire",
-    "alpha-2": "NH"
+    "abbrev": "NH"
   },
   {
     "name": "New Jersey",
-    "alpha-2": "NJ"
+    "abbrev": "NJ"
   },
   {
     "name": "New Mexico",
-    "alpha-2": "NM"
+    "abbrev": "NM"
   },
   {
     "name": "New York",
-    "alpha-2": "NY"
+    "abbrev": "NY"
   },
   {
     "name": "North Carolina",
-    "alpha-2": "NC"
+    "abbrev": "NC"
   },
   {
     "name": "North Dakota",
-    "alpha-2": "ND"
+    "abbrev": "ND"
   },
   {
     "name": "Ohio",
-    "alpha-2": "OH"
+    "abbrev": "OH"
   },
   {
     "name": "Oklahoma",
-    "alpha-2": "OK"
+    "abbrev": "OK"
   },
   {
     "name": "Oregon",
-    "alpha-2": "OR"
+    "abbrev": "OR"
   },
   {
     "name": "Pennsylvania",
-    "alpha-2": "PA"
+    "abbrev": "PA"
   },
   {
     "name": "Rhode Island",
-    "alpha-2": "RI"
+    "abbrev": "RI"
   },
   {
     "name": "South Carolina",
-    "alpha-2": "SC"
+    "abbrev": "SC"
   },
   {
     "name": "South Dakota",
-    "alpha-2": "SD"
+    "abbrev": "SD"
   },
   {
     "name": "Tennessee",
-    "alpha-2": "TN"
+    "abbrev": "TN"
   },
   {
     "name": "Texas",
-    "alpha-2": "TX"
+    "abbrev": "TX"
   },
   {
     "name": "Utah",
-    "alpha-2": "UT"
+    "abbrev": "UT"
   },
   {
     "name": "Vermont",
-    "alpha-2": "VT"
+    "abbrev": "VT"
   },
   {
     "name": "Virginia",
-    "alpha-2": "VA"
+    "abbrev": "VA"
   },
   {
     "name": "Washington",
-    "alpha-2": "WA"
+    "abbrev": "WA"
   },
   {
     "name": "West Virginia",
-    "alpha-2": "WV"
+    "abbrev": "WV"
   },
   {
     "name": "Wisconsin",
-    "alpha-2": "WI"
+    "abbrev": "WI"
   },
   {
     "name": "Wyoming",
-    "alpha-2": "WY"
+    "abbrev": "WY"
   }
 ];
+
+var State = Ember.Object.extend({
+  name: "",
+  abbrev: "",
+  lowerCaseAbbrev: Ember.computed("abbrev", function() {
+    return this.get("abbrev").toLowerCase();
+  })
+});
+
+var states = stateData.map(function(pojoState) {
+  return State.create(pojoState);
+});
+
+export default states;

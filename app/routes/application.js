@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  events: {
+  actions: {
     didTransition: function() {
       this.analytics.reportEvent({
         type: 'pageView',
