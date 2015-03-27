@@ -5,17 +5,20 @@ export default Ember.TextField.extend({
   classNameBindings: ["parser.isValidCard"],
 
   parser: Ember.computed(function() {
-    return Parser.create({
-      inputBinding: Ember.Binding.oneWay("component.value"),
-      component: this
-    });
+    return Parser.create();
   }),
+
+  parseInput: Ember.observer('value', function() {
+    this.set('parser.input', this.get('value'));
+  }),
+
+  formatOutput: Ember.observer('parser.formattedOutput', function() {
+    this.set('value', this.get('parser.formattedOutput'));
+  }).on("init"),
 
   setCreditCardType: Ember.observer('parser.type', function() {
     this.set('type', this.get('parser.type'));
   }),
-
-  valueBinding: Ember.Binding.oneWay("parser.formattedOutput"),
 
   setNumber: Ember.observer("parser.validNumber", function() {
     this.set("number", this.get("parser.validNumber"));

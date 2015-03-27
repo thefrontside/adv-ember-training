@@ -35,7 +35,7 @@ export default Ember.Object.extend({
     }
   }),
 
-  validNumber: Ember.computed("isValidCard", function() {
+  validNumber: Ember.computed("isValidCard", "isLongEnough", function() {
     if(this.get("isValidCard")) {
       return this.get("strippedInput");
     } else {
