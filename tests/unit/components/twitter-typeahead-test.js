@@ -5,15 +5,8 @@ import {
   test
 } from 'ember-qunit';
 import Ember from 'ember';
-import startApp from "../../helpers/start-app";
-
-var App;
 
 moduleForComponent('twitter-typeahead', 'TwitterTypeaheadComponent', {
-  // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
-  setup: function() { App = startApp(); },
-  teardown: function() { Ember.run(App, App.destroy); }
 });
 
 var spiedSourceFunc = sinon.spy(function(query, callback) {

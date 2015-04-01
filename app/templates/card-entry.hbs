@@ -5,10 +5,19 @@
 <div>
   <h1> Enter Credit Card </h1>
   {{#cc-form card=creditCard as |form|}}
-    {{#if form.number}}
-      Valid
+
+    {{#if form.isInvalid}}
+      <div class="validation-errors">
+        <h3>Please enter:</h3>
+        <ul class="validation-error-messages">
+          {{#unless form.numberIsValid}}<li>A valid credit card number</li>{{/unless}}
+          {{#unless form.expIsValid}}<li>A valid expiration date</li>{{/unless}}
+          {{#unless form.ccvIsValid}}<li>Your 3 or 4 digit security code</li>{{/unless}}
+          {{#unless form.nameIsValid}}<li>Your name</li>{{/unless}}
+        </ul>
+      </div>
     {{else}}
-      Invalid
+      Card is valid!
     {{/if}}
 
     <div class="cc-outer {{form.type}}">
@@ -16,8 +25,11 @@
         <div class="cc-inner">
           {{cc-input number=form.number type=form.type class="spec-cc-input cc-number" placeholder="4111111111111111"}}
           {{input value=form.exp class="spec-cc-exp cc-exp" placeholder="EXP"}}
+
           {{input value=form.ccv class="spec-cc-ccv cc-ccv" placeholder="CCV"}}
+
           {{input value=form.name class="spec-cc-name cc-name" placeholder="YOUR NAME"}}
+
           <button class="spec-pay-button" {{bind-attr disabled="form.isInvalid"}} {{action "submitCard" form}}>Pay!</button>
         </div>
       </div>

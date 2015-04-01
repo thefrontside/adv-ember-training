@@ -15,7 +15,8 @@ var Form = Ember.Object.extend({
     var ccvRegex = /\d{3,4}/;
     return ccvRegex.test(this.get("ccv"));
   }),
-  isSubmittable: Ember.computed.and("number", "nameIsValid", "expIsValid", "ccvIsValid"),
+  numberIsValid: Ember.computed.bool("number"),
+  isSubmittable: Ember.computed.and("numberIsValid", "nameIsValid", "expIsValid", "ccvIsValid"),
   isInvalid: Ember.computed.not("isSubmittable")
 });
 

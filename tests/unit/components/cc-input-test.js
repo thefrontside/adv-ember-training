@@ -38,7 +38,7 @@ test("has no number property when the input is not valid", function() {
     component.set("value", "1234");
   });
   equal(null, component.get('number'));
-  ok(component.$().is(":not(.is-valid-card)"), "does not contain is-valid-card class");
+  ok(component.$().is(":not(.is-valid)"), "does not contain is-valid class");
 });
 
 test("sets the number property", function() {
@@ -50,5 +50,5 @@ test("sets the number property", function() {
 
   ok(component.get("value"));
   equal(component.get('number'), "4242424242424242");
-  ok(component.$().is(".is-valid-card"), "contains is-valid-card class");
+  ok(component.$().is(".is-valid"), "contains is-valid class");
 });

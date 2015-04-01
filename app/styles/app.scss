@@ -9,6 +9,7 @@ html, body {
   background-color: $color-background;
   margin: 20px;
   text-align: center;
+  font-family: sans-serif;
 }
 
 body > div {
@@ -39,6 +40,8 @@ input {
   font-family: "serif";
 
   height: 20px;
+  font-family: sans-serif;
+
 }
 
 .tt-dropdown-menu {
@@ -132,6 +135,11 @@ input {
       font-family: $cc-input;
       line-height: normal;
       border: 1px lightgray solid;
+      transition: background-color 0.3s ease;
+      &.is-valid {
+        border: 1px solid green;
+        background-color: #E6F4E9;
+      }
     }
     .cc-number {
       left: 1.8em;
@@ -155,10 +163,10 @@ input {
       text-transform: uppercase;
     }
     .cc-exp {
-      left: 180px;
+      left: 168px;
       top: 185px;
       position: absolute;
-      width: 4em;
+      width: 5em;
     }
     .cc-ccv {
       left: 230px;
@@ -179,6 +187,43 @@ input {
       position: absolute;
       top: 12em;
       left: 18em;
+    }
+  }
+}
+
+ul.validation-error-messages {
+  width: 300px;
+  text-align: left;
+  margin-left: calc(50% - 150px);
+  color: red;
+  li {
+    background-color:
+  }
+}
+
+#songs {
+  .songs, .playlist {
+    width: 50%;
+    float: left;
+  }
+  ul.song-items, ul.playlist-items {
+    margin: 10px;
+    border-radius: 6px;
+    border: 1px solid #dddddd;
+    margin: 10px;
+    padding:0;
+    text-align: left;
+    list-style-type: none;
+    list-style-position:inside;
+
+  }
+  li.song-item, li.playlist-item {
+    padding: 10px;
+    button {
+      float: right;
+    }
+    &:nth-child(even) {
+      background-color: #efefef;
     }
   }
 }
