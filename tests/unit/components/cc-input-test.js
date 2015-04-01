@@ -51,4 +51,8 @@ test("sets the number property", function() {
   ok(component.get("value"));
   equal(component.get('number'), "4242424242424242");
   ok(component.$().is(".is-valid"), "contains is-valid class");
+
+  return new Ember.RSVP.Promise(function(resolve, reject){
+    Ember.run.next(resolve);
+  });
 });
